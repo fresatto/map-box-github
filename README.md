@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Descrição
 
 Projeto acadêmico onde você pode adicionar desenvolvedores no mapa apenas clicando sobre ele e digitando o usuário do github.
