@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Descrição
 
+Projeto acadêmico onde você pode adicionar desenvolvedores no mapa apenas clicando sobre ele e digitando o usuário do github.
+
 ## Para rodar o projeto
 
 1. Clone esse repositório.
