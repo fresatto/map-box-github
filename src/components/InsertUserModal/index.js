@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Creators as UserActions } from '../../store/ducks/users'
+
+import PropTypes from 'prop-types'
 // Stylesss
 import {
 	Container,
@@ -16,10 +18,6 @@ import {
 class InsertUserModal extends Component {
 	state = {
 		query: '',
-	}
-
-	componentDidMount() {
-		this.nameInput.focus()
 	}
 
 	handleInputChange = e => {
@@ -44,15 +42,17 @@ class InsertUserModal extends Component {
 						placeholder="Usuário no github"
 						value={this.state.query}
 						onChange={e => this.handleInputChange(e)}
-						ref={input => {
-							this.nameInput = input
-						}}
 					/>
 					<ContainerButtons>
 						<SaveButton type="submit">
 							{loading ? 'Carregando...' : 'Salvar'}
 						</SaveButton>
-						<CancelButton type="button">Cancelar</CancelButton>
+						<CancelButton
+							type="button"
+							onClick={() => this.props.closeModal()}
+						>
+							Cancelar
+						</CancelButton>
 					</ContainerButtons>
 				</Form>
 			</Container>
@@ -66,6 +66,13 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch)
+
+InsertUserModal.propTypes = {
+	modalVisible: PropTypes.bool.isRequired,
+	loading: PropTypes.bool.isRequired,
+	closeModal: PropTypes.func.isRequired,
+	userDataRequest: PropTypes.func.isRequired,
+}
 
 export default connect(
 	mapStateToProps,

@@ -3,11 +3,13 @@ const INITIAL_STATE = {
 	modalVisible: false,
 	userToAdd: {},
 	loading: false,
-	requestError: '',
+	error: false,
 }
 
 export const Types = {
 	SET_POSITION: '@users/SET_POSITION',
+	CLOSE_MODAL: '@users/CLOSE_MODAL',
+	CLOSE_ERROR_MSG: '@users/CLOSE_ERROR_MSG',
 	USER_DATA_REQUEST: '@users/USER_DATA_REQUEST',
 	USER_DATA_SUCCESS: '@users/USER_DATA_SUCCESS',
 	USER_DATA_FAILURE: '@users/USER_DATA_FAILURE',
@@ -21,6 +23,13 @@ export default function users(state = INITIAL_STATE, action) {
 				modalVisible: true,
 				userToAdd: { position: action.payload.position },
 			}
+
+		case Types.CLOSE_MODAL:
+			return {
+				...state,
+				modalVisible: false,
+			}
+
 		case Types.USER_DATA_REQUEST:
 			return { ...state, loading: true }
 
@@ -38,10 +47,13 @@ export default function users(state = INITIAL_STATE, action) {
 		case Types.USER_DATA_FAILURE:
 			return {
 				...state,
-				requestError: action.payload.error,
+				error: true,
 				loading: false,
 				modalVisible: false,
 			}
+
+		case Types.CLOSE_ERROR_MSG:
+			return { ...state, error: false }
 		default:
 			return state
 	}
@@ -65,5 +77,12 @@ export const Creators = {
 		payload: {
 			position,
 		},
+	}),
+	closeModal: () => ({
+		type: Types.CLOSE_MODAL,
+	}),
+
+	closeErrorMsg: () => ({
+		type: Types.CLOSE_ERROR_MSG,
 	}),
 }
