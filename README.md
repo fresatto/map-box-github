@@ -2,6 +2,8 @@
 
 Projeto acadêmico onde você pode adicionar desenvolvedores no mapa apenas clicando sobre ele e digitando o usuário do github.
 
+Veja em: https://gabrielfresatto.github.io/map-box-github/
+
 ## Para rodar o projeto
 
 1. Clone esse repositório.
