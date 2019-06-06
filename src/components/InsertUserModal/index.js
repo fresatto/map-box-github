@@ -34,10 +34,12 @@ class InsertUserModal extends Component {
 	}
 	render() {
 		const { modalVisible, loading } = this.props
+
 		return (
 			<Container visibility={modalVisible ? 'block' : 'hidden'}>
 				<Form onSubmit={e => this.handleSubmit(e)}>
 					<Input
+						autoFocus={modalVisible}
 						type="text"
 						placeholder="Usuário no github"
 						value={this.state.query}

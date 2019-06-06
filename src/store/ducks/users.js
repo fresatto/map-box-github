@@ -13,6 +13,7 @@ export const Types = {
 	USER_DATA_REQUEST: '@users/USER_DATA_REQUEST',
 	USER_DATA_SUCCESS: '@users/USER_DATA_SUCCESS',
 	USER_DATA_FAILURE: '@users/USER_DATA_FAILURE',
+	REMOVE_USER: '@users/REMOVE_USER',
 }
 
 export default function users(state = INITIAL_STATE, action) {
@@ -52,6 +53,12 @@ export default function users(state = INITIAL_STATE, action) {
 				modalVisible: false,
 			}
 
+		case Types.REMOVE_USER:
+			return {
+				...state,
+				all: state.all.filter(user => user.id !== action.payload.id),
+			}
+
 		case Types.CLOSE_ERROR_MSG:
 			return { ...state, error: false }
 		default:
@@ -84,5 +91,12 @@ export const Creators = {
 
 	closeErrorMsg: () => ({
 		type: Types.CLOSE_ERROR_MSG,
+	}),
+
+	removeUser: ({ id }) => ({
+		type: Types.REMOVE_USER,
+		payload: {
+			id,
+		},
 	}),
 }

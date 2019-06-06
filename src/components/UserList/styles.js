@@ -44,6 +44,14 @@ export const ListItem = styled.li`
 		border-radius: 100%;
 	}
 
+	button {
+		border: none;
+		background: transparent;
+		outline: 0;
+		display: flex;
+		cursor: pointer;
+	}
+
 	svg {
 		font-size: 21px;
 		color: darkred;
